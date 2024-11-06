@@ -1,5 +1,5 @@
 .env
-node_modules
+node_modules/
 git add .env
 git commit -m "Add .env file"
 git push
@@ -7,3 +7,4 @@ git push
 git add public/file1 public/file2 public/file3
 git commit -m "Add a batch of files from the public folder"
 git push
+# 
