@@ -1,5 +1,5 @@
 .env
-node_modules/
+git add node_modules/
 git add .env
 git commit -m "Add .env file"
 git push
