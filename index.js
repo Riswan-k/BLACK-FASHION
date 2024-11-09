@@ -9,7 +9,9 @@ require('./middlewares/passport');
 
 dotenv.config();
 
-mongoose.connect(process.env.mongo_url);
+mongoose.connect(process.env.mongo_url).then(() =>{
+    console.log("Mongodb Connected");
+})
 
 const userRoute = require('./routes/userRoute');
 const adminRoute = require('./routes/adminRoute');
