@@ -1,0 +1,501 @@
+<%- include('../layouts/header.ejs') %>
+
+<!-- Categories Section Begin -->
+<section class="categories py-5">
+    <div class="container">
+        <div class="row g-3">
+            <div class="col-lg-6 mb-4">
+                <div class="card rounded-3 overflow-hidden shadow-sm category-card h-100">
+                    <div class="card-img-top position-relative">
+                        <img src="/assets/img/categories/category-1.jpg" class="img-fluid w-100" alt="Women's Fashion">
+                        <div class="card-img-overlay d-flex flex-column justify-content-end text-white p-4">
+                            <h2 class="fw-bold mb-2">Women's fashion</h2>
+                            <p class="d-none d-md-block">Discover the latest trends in women's clothing, from casual essentials to elegant occasion wear.</p>
+                            <a href="/shop" class="btn btn-light btn-sm text-primary fw-bold mt-2 align-self-start px-4">Shop now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="row g-3">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="card rounded-3 overflow-hidden shadow-sm category-card h-100">
+                            <div class="card-img-top position-relative">
+                                <img src="/assets/img/categories/category-2.jpg" class="img-fluid w-100" alt="Men's Fashion">
+                                <div class="card-img-overlay d-flex flex-column justify-content-end text-white p-3">
+                                    <h5 class="fw-bold mb-1">Men's fashion</h5>
+                                    <p class="small mb-2">358 items</p>
+                                    <a href="/shop" class="btn btn-light btn-sm text-primary fw-bold align-self-start px-3">Shop now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="card rounded-3 overflow-hidden shadow-sm category-card h-100">
+                            <div class="card-img-top position-relative">
+                                <img src="/assets/img/categories/category-3.jpg" class="img-fluid w-100" alt="Kid's Fashion">
+                                <div class="card-img-overlay d-flex flex-column justify-content-end text-white p-3">
+                                    <h5 class="fw-bold mb-1">Kid's fashion</h5>
+                                    <p class="small mb-2">273 items</p>
+                                    <a href="/shop" class="btn btn-light btn-sm text-primary fw-bold align-self-start px-3">Shop now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 mt-3">
+                        <div class="card rounded-3 overflow-hidden shadow-sm category-card h-100">
+                            <div class="card-img-top position-relative">
+                                <img src="/assets/img/categories/category-4.jpg" class="img-fluid w-100" alt="Cosmetics">
+                                <div class="card-img-overlay d-flex flex-column justify-content-end text-white p-3">
+                                    <h5 class="fw-bold mb-1">Cosmetics</h5>
+                                    <p class="small mb-2">159 items</p>
+                                    <a href="/shop" class="btn btn-light btn-sm text-primary fw-bold align-self-start px-3">Shop now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 mt-3">
+                        <div class="card rounded-3 overflow-hidden shadow-sm category-card h-100">
+                            <div class="card-img-top position-relative">
+                                <img src="/assets/img/categories/category-5.jpg" class="img-fluid w-100" alt="Accessories">
+                                <div class="card-img-overlay d-flex flex-column justify-content-end text-white p-3">
+                                    <h5 class="fw-bold mb-1">Accessories</h5>
+                                    <p class="small mb-2">792 items</p>
+                                    <a href="/shop" class="btn btn-light btn-sm text-primary fw-bold align-self-start px-3">Shop now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Categories Section End -->
+
+<!-- Product Section Begin -->
+<section class="product py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center mb-4">
+            <div class="col-lg-4 col-md-6">
+                <h3 class="fw-bold mb-0">New Arrivals</h3>
+                <p class="text-muted">Fresh styles updated weekly</p>
+            </div>
+            <div class="col-lg-8 col-md-6">
+                <div class="product-filter d-flex flex-wrap justify-content-md-end gap-2 mt-3 mt-md-0">
+                  
+                </div>
+            </div>
+        </div>
+        <main>
+            <div class="product-list">
+                <% productData.forEach(product => { %>
+                    <div class="product-card">
+                        <a href="/productDetails/<%= product._id %>">
+                            <img src="<%= product.mainImage %>" alt="<%= product.name %>" class="product-image">
+                        </a>
+
+                        <h5 class="product-name" ><%= product.name %></h5>
+                        <!-- <p>Price: $<%= product.price %></p>x -->
+                        <% if (product.stock > 0) { %>
+                            <form action="/cart/add" method="POST">
+                                <input type="hidden" name="productId" value="<%= product._id %>">
+                                <button type="submit">Add to Cart</button>
+                            </form>
+                        <% } else { %>
+                           
+                        <% } %>
+                    </div>
+                <% }); %>
+            </div>
+        </main>
+        <div class="text-center mt-5">
+            <a href="/shop" class="btn btn-outline-primary px-4 py-2">View All Products</a>
+        </div>
+    </div>
+</section>
+<!-- Product Section End -->
+
+<!-- Banner Section Begin -->
+<section class="banner py-5">
+    <div class="container-fluid px-0">
+        <div class="position-relative overflow-hidden">
+            <img src="/assets/img/banner/banner-1.jpg" class="img-fluid w-100" alt="Banner">
+            <div class="position-absolute top-0 start-0 end-0 bottom-0 d-flex align-items-center justify-content-center">
+                <div class="banner-content text-center bg-dark bg-opacity-50 text-white p-4 p-md-5 rounded-3 col-10 col-md-8 col-lg-6 col-xl-5">
+                    <span class="d-block text-uppercase mb-2 text-warning fw-light">The Chloe Collection</span>
+                    <h2 class="display-4 fw-bold mb-4">The Project Jacket</h2>
+                    <p class="mb-4 d-none d-md-block">Elevate your style with our signature jacket, designed for the modern fashion enthusiast.</p>
+                    <a href="#" class="btn btn-light px-4 py-2 fw-bold">Shop now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Banner Section End -->
+
+<!-- Trend Section Begin -->
+<section class="trend py-5">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Hot Trend -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 h-100">
+                    <div class="card-header bg-white border-0 pb-0">
+                        <h4 class="fw-bold">Hot Trend</h4>
+                    </div>
+                    <div class="card-body">
+                        <!-- Trend Item 1 -->
+                        <div class="d-flex align-items-center mb-4 trend-item p-2 rounded">
+                            <div class="flex-shrink-0">
+                                <img src="/assets/img/trend/ht-1.jpg" class="rounded-3" width="80" alt="Chain bucket bag">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1"><a href="#" class="text-decoration-none text-dark">Chain bucket bag</a></h6>
+                                <div class="text-warning small mb-1">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="fw-bold">$59.00</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Trend Item 2 -->
+                        <div class="d-flex align-items-center mb-4 trend-item p-2 rounded">
+                            <div class="flex-shrink-0">
+                                <img src="/assets/img/trend/ht-2.jpg" class="rounded-3" width="80" alt="Pendant earrings">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1"><a href="#" class="text-decoration-none text-dark">Pendant earrings</a></h6>
+                                <div class="text-warning small mb-1">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="fw-bold">$59.00</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Trend Item 3 -->
+                        <div class="d-flex align-items-center trend-item p-2 rounded">
+                            <div class="flex-shrink-0">
+                                <img src="/assets/img/trend/ht-3.jpg" class="rounded-3" width="80" alt="Cotton T-Shirt">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1"><a href="#" class="text-decoration-none text-dark">Cotton T-Shirt</a></h6>
+                                <div class="text-warning small mb-1">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="fw-bold">$59.00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Best Seller -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 h-100">
+                    <div class="card-header bg-white border-0 pb-0">
+                        <h4 class="fw-bold">Best Seller</h4>
+                    </div>
+                    <div class="card-body">
+                        <!-- Trend Item 1 -->
+                        <div class="d-flex align-items-center mb-4 trend-item p-2 rounded">
+                            <div class="flex-shrink-0">
+                                <img src="/assets/img/trend/bs-1.jpg" class="rounded-3" width="80" alt="Cotton T-Shirt">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1"><a href="#" class="text-decoration-none text-dark">Cotton T-Shirt</a></h6>
+                                <div class="text-warning small mb-1">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="fw-bold">$59.00</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Trend Item 2 -->
+                        <div class="d-flex align-items-center mb-4 trend-item p-2 rounded">
+                            <div class="flex-shrink-0">
+                                <img src="/assets/img/trend/bs-2.jpg" class="rounded-3" width="80" alt="Zip-pockets tote briefcase">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1"><a href="#" class="text-decoration-none text-dark">Zip-pockets tote briefcase</a></h6>
+                                <div class="text-warning small mb-1">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="fw-bold">$59.00</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Trend Item 3 -->
+                        <div class="d-flex align-items-center trend-item p-2 rounded">
+                            <div class="flex-shrink-0">
+                                <img src="/assets/img/trend/bs-3.jpg" class="rounded-3" width="80" alt="Round leather bag">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1"><a href="#" class="text-decoration-none text-dark">Round leather bag</a></h6>
+                                <div class="text-warning small mb-1">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="fw-bold">$59.00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Featured -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 h-100">
+                    <div class="card-header bg-white border-0 pb-0">
+                        <h4 class="fw-bold">Featured</h4>
+                    </div>
+                    <div class="card-body">
+                        <!-- Trend Item 1 -->
+                        <div class="d-flex align-items-center mb-4 trend-item p-2 rounded">
+                            <div class="flex-shrink-0">
+                                <img src="/assets/img/trend/f-1.jpg" class="rounded-3" width="80" alt="Bow wrap skirt">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1"><a href="#" class="text-decoration-none text-dark">Bow wrap skirt</a></h6>
+                                <div class="text-warning small mb-1">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="fw-bold">$59.00</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Trend Item 2 -->
+                        <div class="d-flex align-items-center mb-4 trend-item p-2 rounded">
+                            <div class="flex-shrink-0">
+                                <img src="/assets/img/trend/f-2.jpg" class="rounded-3" width="80" alt="Metallic earrings">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1"><a href="#" class="text-decoration-none text-dark">Metallic earrings</a></h6>
+                                <div class="text-warning small mb-1">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="fw-bold">$59.00</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Trend Item 3 -->
+                        <div class="d-flex align-items-center trend-item p-2 rounded">
+                            <div class="flex-shrink-0">
+                                <img src="/assets/img/trend/f-3.jpg" class="rounded-3" width="80" alt="Flap cross-body bag">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1"><a href="#" class="text-decoration-none text-dark">Flap cross-body bag</a></h6>
+                                <div class="text-warning small mb-1">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="fw-bold">$59.00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Trend Section End -->
+
+<!-- Discount Section Begin -->
+<section class="discount py-5 bg-light">
+    <div class="container">
+        <div class="row g-0 rounded-3 overflow-hidden shadow">
+            <div class="col-lg-6">
+                <img src="/assets/img/discount.jpg" class="img-fluid h-100 w-100 object-fit-cover" alt="Discount banner">
+            </div>
+            <div class="col-lg-6 bg-primary text-white d-flex align-items-center">
+                <div class="p-4 p-lg-5 text-center text-lg-start">
+                    <span class="badge bg-warning text-dark mb-3">Limited Time Offer</span>
+                    <h2 class="display-5 fw-bold mb-2">Spring 2025</h2>
+                    <h4 class="mb-4">Up to <span class="bg-warning text-dark px-2 py-1 rounded">50% OFF</span></h4>
+                    
+                    <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3 my-4">
+                        <div class="bg-white text-primary p-3 rounded text-center" style="min-width: 70px">
+                            <div class="fs-3 fw-bold" id="days">22</div>
+                            <small>Days</small>
+                        </div>
+                        <div class="bg-white text-primary p-3 rounded text-center" style="min-width: 70px">
+                            <div class="fs-3 fw-bold" id="hours">18</div>
+                            <small>Hours</small>
+                        </div>
+                        <div class="bg-white text-primary p-3 rounded text-center" style="min-width: 70px">
+                            <div class="fs-3 fw-bold" id="minutes">46</div>
+                            <small>Minutes</small>
+                        </div>
+                        <div class="bg-white text-primary p-3 rounded text-center" style="min-width: 70px">
+                            <div class="fs-3 fw-bold" id="seconds">05</div>
+                            <small>Seconds</small>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="btn btn-light btn-lg px-4 fw-bold">Shop now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Discount Section End -->
+
+<!-- Services Section Begin -->
+<section class="services py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card border-0 h-100 text-center p-4 service-card">
+                    <div class="service-icon mx-auto mb-3 rounded-circle bg-light d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
+                        <i class="fa fa-car fa-lg text-primary"></i>
+                    </div>
+                    <div class="card-body p-0">
+                        <h5 class="mb-2">Free Shipping</h5>
+                        <p class="text-muted mb-0">For all orders over $99</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card border-0 h-100 text-center p-4 service-card">
+                    <div class="service-icon mx-auto mb-3 rounded-circle bg-light d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
+                        <i class="fa fa-money fa-lg text-primary"></i>
+                    </div>
+                    <div class="card-body p-0">
+                        <h5 class="mb-2">Money Back Guarantee</h5>
+                        <p class="text-muted mb-0">30 days money back guarantee</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card border-0 h-100 text-center p-4 service-card">
+                    <div class="service-icon mx-auto mb-3 rounded-circle bg-light d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
+                        <i class="fa fa-support fa-lg text-primary"></i>
+                    </div>
+                    <div class="card-body p-0">
+                        <h5 class="mb-2">Online Support 24/7</h5>
+                        <p class="text-muted mb-0">Dedicated customer support</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card border-0 h-100 text-center p-4 service-card">
+                    <div class="service-icon mx-auto mb-3 rounded-circle bg-light d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
+                        <i class="fa fa-lock fa-lg text-primary"></i>
+                    </div>
+                    <div class="card-body p-0">
+                        <h5 class="mb-2">Secure Payment</h5>
+                        <p class="text-muted mb-0">100% secure payment system</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Services Section End -->
+
+<!-- Add this before closing body tag -->
+<style>
+     .product-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+    .product-card {
+        width: 200px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        text-align: center;
+        border-radius: 8px;
+    }
+    .product-name {
+        padding: 10px;
+    }
+    .product-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+/* Custom CSS */
+.product-card:hover .transform-hide {
+    transform: translateY(0);
+    opacity: 1;
+}
+.transform-hide {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+.product-title {
+    transition: color 0.3s;
+}
+.product-title:hover {
+    color: #007bff !important;
+}
+.category-card {
+    transition: transform 0.3s;
+}
+.category-card:hover {
+    transform: translateY(-5px);
+}
+.trend-item {
+    transition: all 0.3s;
+}
+.trend-item:hover {
+    background-color: #f8f9fa;
+}
+.service-card {
+    transition: transform 0.3s;
+}
+.service-card:hover {
+    transform: translateY(-5px);
+}
+.service-icon {
+    transition: all 0.3s;
+}
+.service-card:hover .service-icon {
+    background-color: #007bff;
+}
+.service-card:hover .service-icon i {
+    color: white !important;
+}
+</style>
+<!-- Services Section End -->
+
+
+
+<%- include('../layouts/footer.ejs') %>
