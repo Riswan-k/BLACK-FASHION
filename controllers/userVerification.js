@@ -21,7 +21,7 @@ function generateOTP() {
   const sendPassResetMail = async (name, email, otp) => {
     try {
       const transporter = nodemailer.createTransport({
-        host: "muhammedriz2004@gmail.com",
+        host: "smtp.gmail.com",
         port: 587,
         secure: false,
         requireTLS: true,
@@ -44,6 +44,7 @@ function generateOTP() {
               <p>Best regards,<br>lack Fashion Team</p>
               `,
       };
+
       transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
           console.log(error);
