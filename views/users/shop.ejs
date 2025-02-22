@@ -1,98 +1,433 @@
 <%- include('../layouts/header') %>
 <style>
-    select {
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-        font-size: 14px;
-        width: 100%;
-        margin-bottom: 10px;
-        background-color: #fff;
-        color: #333;
-        cursor: pointer;
-    }
+   select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+}
 
-    option {
-        background-color: #fff;
-        color: #333;
-    }
+option {
+    background-color: #fff;
+    color: #333;
+}
 
-    option:checked {
-        background-color: #f0f0f0;
-        color: #000;
-    }
+option:checked {
+    background-color: #f0f0f0;
+    color: #000;
+}
 
+/* Header and Navigation */
+.header {
+    position: fixed;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+    padding: 15px 0;
+}
+
+@media (max-width: 768px) {
     .header {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-        background-color: #fff;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 10px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        position:fixed;
+        top: 0px;
     }
 
     .breadcrumb-option {
+        margin-top: 60px; /* Adjust this value based on your navbar height */
+        padding: 10px 0;
+    }
+}
+
+.header__logo {
+    padding: 0 20px;
+}
+
+.header__logo img {
+    max-height: 75px;
+    width: auto;
+    transition: all 0.3s ease;
+}
+
+.breadcrumb-option {
+    position: relative;
+    width: 100%;
+    background-color: #fff;
+    padding: 15px 0;
+    margin-bottom: 30px;
+}
+
+/* Sidebar */
+.sidebar__fixed {
+    position: static;
+    height: auto;
+    overflow-y: visible;
+}
+
+.sidebar__close {
+    display: none;
+}
+
+/* Product List */
+#productList {
+    padding-top: 20px;
+}
+
+/* Search Container */
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.search-container input[type="text"] {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px 0 0 3px;
+    font-size: 14px;
+    width: 250px;
+}
+
+.search-container button {
+    padding: 8px 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 0 3px 3px 0;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-container button:hover {
+    background-color: #444;
+}
+
+/* Product Rating */
+.product__item__text .rating {
+    margin-bottom: 10px;
+}
+
+.product__item__text .rating i {
+    color: #f8ce0b;
+    font-size: 16px;
+}
+
+.product__item__text .rating .fa-star-o {
+    color: #ccc;
+}
+
+.product__item__text .rating span {
+    margin-left: 5px;
+    color: #777;
+}
+
+/* Enhanced Product Styles */
+.product__item {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.product__item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+}
+
+.product__item__pic {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #f8f8f8;
+    padding: 20px;
+}
+
+.product__item__pic img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.product__item:hover .product__item__pic img {
+    transform: scale(1.05);
+}
+
+.product__item__text {
+    padding: 15px;
+}
+
+/* Product Labels */
+.label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    z-index: 2;
+}
+
+.label.out-of-stock {
+    background-color: #ff4444;
+    color: white;
+}
+
+.label.new {
+    background-color: #00C851;
+    color: white;
+}
+
+/* Product Hover Effects */
+/* .product__hover {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    background: rgba(255,255,255,0.9);
+    padding: 8px 20px;
+    border-radius: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+} */
+
+/* .product__item:hover .product__hover {
+    opacity: 1;
+} */
+
+/* Filter Toggle */
+.filter-toggle {
+    display: none;
+}
+
+/* Pagination Styles */
+.pagination__option {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 20px 0;
+}
+
+.pagination__option a {
+    min-width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f5f5;
+    border-radius: 5px;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.pagination__option a.active,
+.pagination__option a:hover {
+    background: #333;
+    color: #fff;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .header {
+        padding: 10px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .header__logo {
+        padding: 0 15px;
+    }
+
+    .header__logo img {
+        max-height: 35px;
+    }
+
+    .breadcrumb-option {
+        margin-top: 60px;
+        padding: 10px 0;
+    }
+
+    .filter-toggle {
+        display: flex;
         position: fixed;
-        top: 50px;
-        width: 100%;
-        z-index: 10;
-        background-color: #fff;
-        padding-top: 90px;
+        bottom: 25px;
+        right: 25px;
+        width: 50px;
+        height: 50px;
+        background: #333;
+        color: white;
+        border-radius: 50%;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        z-index: 1000;
+        cursor: pointer;
+        transition: all 0.3s ease;
     }
 
-    .sidebar__fixed {
-        position: sticky;
-        top: 200px;
-        height: calc(100vh - 150px);
+    .filter-toggle:hover {
+        background: #444;
+        transform: scale(1.05);
+    }
+
+    .shop__sidebar {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 80%;
+        height: 100vh;
+        background: #fff;
+        z-index: 1001;
         overflow-y: auto;
+        padding: 60px 20px 20px;
+        box-shadow: 2px 0 15px rgba(0,0,0,0.15);
+        transition: left 0.3s ease-in-out;
+        border-radius: 0 20px 20px 0;
     }
 
-    #productList {
-        padding-top: 100px;
+    .shop__sidebar.active {
+        left: 0;
+    }
+
+    .sidebar__close {
+        display: flex;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 30px;
+        height: 30px;
+        background: #f5f5f5;
+        border-radius: 50%;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        color: #333;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .sidebar__close:hover {
+        background: #e0e0e0;
+    }
+
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.4);
+        backdrop-filter: blur(2px);
+        z-index: 999;
+    }
+
+    .sidebar-overlay.active {
+        display: block;
+    }
+
+    .col-lg-4.col-md-6 {
+        width: 50%;
+        padding: 0 8px;
+    }
+
+    .product__item__pic {
+        height: 250px;
+    }
+
+    .product__hover {
+        opacity: 1;
     }
 
     .search-container {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 10px;
+        flex-direction: column;
+        padding: 0 15px;
     }
 
     .search-container input[type="text"] {
-        padding: 6px;
-        border: 1px solid #ccc;
-        border-radius: 3px 0 0 3px;
-        font-size: 14px;
-        width: 200px;
-     
+        width: 100%;
+        margin-bottom: 10px;
+        border-radius: 3px;
     }
 
     .search-container button {
-        padding: 6px 12px;
-        background-color: #333;
-        color: #fff;
-        border: none;
-        border-radius: 0 3px 3px 0;
+        width: 100%;
+        border-radius: 3px;
+    }
+
+    /* Enhanced mobile navigation menu */
+    .header__menu {
+        padding: 10px 0;
+    }
+
+    .header__menu ul li {
+        padding: 8px 15px;
+    }
+
+    .header__menu ul li a {
         font-size: 14px;
-        cursor: pointer;
+        padding: 5px 0;
+    }
+}
+
+/* Small Mobile Styles */
+@media (max-width: 576px) {
+    .header__logo img {
+        max-height: 45px;
     }
 
-    .product__item__text .rating {
-        margin-bottom: 10px;
+    .header__menu ul li {
+        padding: 6px 12px;
     }
 
-    .product__item__text .rating i {
-        color: #f8ce0b;
+    .header__menu ul li a {
+        font-size: 13px;
+    }
+
+    .col-lg-4.col-md-6 {
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    .product__item__pic {
+        height: 280px;
+    }
+
+    .product__item__text h6 {
         font-size: 16px;
+        margin-bottom: 8px;
     }
 
-    .product__item__text .rating .fa-star-o {
-        color: #ccc;
+    .product__price {
+        font-size: 15px;
+        font-weight: 600;
     }
+}
 
-    .product__item__text .rating span {
-        margin-left: 5px;
-        color: #777;
-    }
+/* Active page styling for pagination */
+.active-page {
+    background-color: rgb(102, 96, 96);
+    color: white;
+}
 </style>
 
 <!-- Breadcrumb Begin -->
@@ -101,7 +436,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb__links">
-                    <a href="/"><i class="fa fa-home"></i> Home</a>
+                    <a href="/"><i class="fa fa-home"></i>Home</a>
                     <span>Shop</span>
                 </div>
             </div>
@@ -110,12 +445,21 @@
 </div>
 <!-- Breadcrumb End -->
 
+<!-- Filter Toggle Button -->
+<div class="filter-toggle">
+    <i class="fa fa-filter"></i>
+</div>
+
+<!-- Sidebar Overlay -->
+<div class="sidebar-overlay"></div>
+
 <!-- Shop Section Begin -->
 <section class="shop spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-3">
                 <div class="shop__sidebar sidebar__fixed">
+                    <div class="sidebar__close">×</div>
                     <div class="sidebar__categories">
                         <div class="section-title">
                             <h4>Categories</h4>
@@ -165,14 +509,14 @@
                     <% productData.forEach(product => { %>
                         <div class="col-lg-4 col-md-6">
                             <div class="product__item">
-                                <div class="product__item__pic" style="display: flex; justify-content: center; align-items: center;">
+                                <div class="product__item__pic">
                                     <a href="/productDetails/<%= product._id %>">
-                                        <img src="/uploads/products/<%= product.mainImage %>" alt="<%= product.name %>" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                        <img src="/uploads/products/<%= product.mainImage %>" alt="<%= product.name %>">
                                     </a>
                                     <% if (product.outOfStock) { %>
-                                        <div class="label out-of-stock" style="background-color: black; color: white;width: 110px; height: 20px;">Out of Stock</div>
+                                        <div class="label out-of-stock">Out of Stock</div>
                                     <% } else if (product.isNew) { %>
-                                        <div class="label new" style="background-color: #36a300;width: 50px; height: 20px;">New</div>
+                                        <div class="label new">New</div>
                                     <% } %>
                                     <ul class="product__hover">
                                         <li><a href="/addToWishlist?productId=<%= product._id %>"><span class="icon_heart_alt"></span></a></li>
@@ -195,11 +539,13 @@
                                                 <i class="fa fa-star-o"></i>
                                             <% } %>
                                         <% } %>
-                                        <span>(<%= product.totalReviews %> reviews)</span>
+                                        <!-- <span>(<%= product.totalReviews %> reviews)</span> -->
                                     </div>
                                     <% if (product.discountedPrice < product.price) { %>
                                         <div class="product__price">
-                                            <span style="text-decoration: line-through;">₹ <%= product.price %></span> ₹ <%= product.discountedPrice %>
+                                            <span style="text-decoration: line-through;">₹ <%= product.price %></span> 
+                                            ₹ <%= product.discountedPrice %>
+                                            <span style="color: green;">(<%= product.discountPercentage %>% off)</span>
                                         </div>
                                     <% } else { %>
                                         <div class="product__price">₹ <%= product.price %></div>
@@ -211,10 +557,7 @@
                 </div>
                 <div class="col-lg-12 text-center">
                     <div class="pagination__option">
-                        <a href="#">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#"><i class="fa fa-angle-right"></i></a>
+                        <!-- Pagination will be dynamically updated -->
                     </div>
                 </div>
             </div>
@@ -226,6 +569,34 @@
 <%- include('../layouts/footer') %>
 
 <script>
+
+// / Add this to your existing JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    const filterToggle = document.querySelector('.filter-toggle');
+    const sidebar = document.querySelector('.shop__sidebar');
+    const overlay = document.querySelector('.sidebar-overlay');
+    const sidebarClose = document.querySelector('.sidebar__close');
+
+    filterToggle.addEventListener('click', toggleSidebar);
+    overlay.addEventListener('click', toggleSidebar);
+    sidebarClose.addEventListener('click', toggleSidebar);
+
+    function toggleSidebar() {
+        sidebar.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+    }
+
+    // Close sidebar when window is resized to desktop view
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+});
+
     document.addEventListener('DOMContentLoaded', function () {
     const categoryDropdown = document.getElementById('categoryDropdown');
     const sizeDropdown = document.getElementById('sizeDropdown');
