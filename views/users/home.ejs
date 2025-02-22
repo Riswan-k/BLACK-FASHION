@@ -88,26 +88,6 @@
             </div>
         </div>
         <main>
-            <div class="product-list">
-                <% productData.forEach(product => { %>
-                    <div class="product-card">
-                        <a href="/productDetails/<%= product._id %>">
-                            <img src="<%= product.mainImage %>" alt="<%= product.name %>" class="product-image">
-                        </a>
-
-                        <h5 class="product-name" ><%= product.name %></h5>
-                        <!-- <p>Price: $<%= product.price %></p>x -->
-                        <% if (product.stock > 0) { %>
-                            <form action="/cart/add" method="POST">
-                                <input type="hidden" name="productId" value="<%= product._id %>">
-                                <button type="submit">Add to Cart</button>
-                            </form>
-                        <% } else { %>
-                           
-                        <% } %>
-                    </div>
-                <% }); %>
-            </div>
         </main>
         <div class="text-center mt-5">
             <a href="/shop" class="btn btn-outline-primary px-4 py-2">View All Products</a>

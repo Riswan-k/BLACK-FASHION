@@ -57,23 +57,14 @@ app.get('/auth/callback', passport.authenticate('google', {
     failureRedirect: '/auth/callback/failure'
 }));
 
-app.get('/auth/callback/success', async (req, res) => {
+app.get('/auth/callback/success', (req, res) => {
     if (req.user) {
-        try {
-            // Fetch product data after successful login
-            const productData = await Product.find({}); // Fetch product data
-
-            // Render the home.ejs template and pass the productData
-            res.render('/home', { productData });
-        } catch (error) {
-            console.error('Error fetching product data:', error);
-            res.status(500).send('Internal Server Error');
-        }
+        res.redirect('/home'); 
     } else {
-        // Redirect to login if the user is not authenticated
-        res.redirect('/login');
+        res.redirect('/login'); 
     }
 });
+
 app.get('/auth/callback/failure', (req, res) => {
     res.send("Error");
 });
