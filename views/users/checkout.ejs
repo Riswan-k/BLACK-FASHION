@@ -1,42 +1,360 @@
 <%- include('../layouts/header') %>
 
 <style>
-  .checkout__address__details {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: #f5f5f5;
-    position: relative;
+  /* Base styles */
+.checkout {
+  padding: 50px 0;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Breadcrumb styles */
+.breadcrumb-option {
+  margin-bottom: 30px;
+  background: #f5f5f5;
+  padding: 15px 0;
+}
+
+.breadcrumb__links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.breadcrumb__links a {
+  color: #333;
+  text-decoration: none;
+}
+
+.breadcrumb__links span {
+  color: #666;
+}
+
+/* Coupon section */
+.checkout__coupon {
+  border: 1px solid #e1e1e1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.checkout__coupon h5 {
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.checkout__coupon input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+  min-width: 200px;
+}
+
+.site-btn1 {
+  background-color: rgb(172, 20, 20);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.site-btn1:hover {
+  background-color: rgb(142, 17, 17);
+}
+
+/* Address section */
+.checkout__address {
+  margin-bottom: 30px;
+}
+
+.checkout__address h5 {
+  margin-bottom: 20px;
+}
+
+.checkout__address__details {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #f5f5f5;
+  position: relative;
+}
+
+.checkout__address__details.active {
+  background-color: lightblue;
+  color: black;
+  border-color: #4a90e2;
+}
+
+.address-option {
+  margin-left: 25px;
+}
+
+.status-indicator-pill {
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 15px;
+  background-color: #6c757d;
+  color: white;
+}
+
+.address-buttons {
+  margin-top: 10px;
+}
+
+/* Order section */
+.checkout__order {
+  background-color: #f8f9fa;
+  padding: 25px;
+  border-radius: 5px;
+  border: 1px solid #e1e1e1;
+}
+
+.checkout__order h5 {
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.checkout__order__product__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.checkout__order__product__item {
+  padding: 15px 0;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.checkout__order__product__item:last-child {
+  border-bottom: none;
+}
+
+.checkout__order__product__item__details {
+  margin-bottom: 10px;
+}
+
+.checkout__order__total ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.checkout__order__total ul li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+  color: red;
+}
+
+/* Payment Method Section */
+.checkout__payment-method {
+  margin: 25px 0;
+}
+
+.checkout__payment-method h5 {
+  margin-bottom: 15px;
+}
+
+.checkout__payment-method label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.checkout__payment-method input[type="radio"] {
+  margin-right: 10px;
+}
+
+/* Submit Button */
+.site-btn {
+  width: 100%;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.site-btn:hover {
+  background-color: #357abd;
+}
+
+/* Alert Messages */
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+
+/* Responsive Design */
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
   }
-  .checkout__address__details.active {
-    background-color: lightblue;
-    color: black;
-  }
-  .address-buttons {
-    position: absolute;
-    top: 70px;
-    right: 10px;
-  }
-  .strikethrough {
-    text-decoration: line-through;
-    color: red;
-  }
-  .order-section{
+  
+  .order-section {
     margin-top: -10rem;
   }
-  .site-btn1 {
-    background-color: rgb(172, 20, 20);
-    color: white;
-    border: none;
-    border-radius: 20px; /* Adjust the value to change the curvature */
-    padding: 10px 20px; /* Adjust padding as needed */
-    font-size: 16px;
-    font-weight: bold;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background-color 0.3s ease; /* Add transition for smooth effect */
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
   }
+}
+
+@media (max-width: 991px) {
+  .order-section {
+    margin-top: 30px;
+  }
+  
+  .col-lg-8,
+  .col-lg-4 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .checkout {
+    padding: 30px 0;
+  }
+  
+  .checkout__coupon {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .checkout__coupon input {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  
+  .checkout__coupon button {
+    width: 100%;
+    margin: 5px 0;
+  }
+  
+  .address-buttons {
+    position: static;
+    text-align: left;
+  }
+  
+  .checkout__address__details {
+    padding: 15px;
+  }
+  
+  .checkout__order {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .breadcrumb__links {
+    font-size: 14px;
+  }
+  
+  .checkout__coupon h5 {
+    font-size: 16px;
+  }
+  
+  .checkout__address__details {
+    padding: 10px;
+  }
+  
+  .status-indicator-pill {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+  
+  .checkout__payment-method label img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .checkout__order__product__item__details {
+    font-size: 14px;
+  }
+  
+  .site-btn,
+  .site-btn1 {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+}
+
+/* Utility Classes */
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  border-radius: 4px;
+  transition: all 0.15s ease-in-out;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-sm {
+  padding: 4px 8px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
 </style>
 
 <!-- Include SweetAlert CSS and JS -->
@@ -103,7 +421,9 @@
                             <%= address.addresstype === 'work' ? 'Work' : 'Home' %>
                           </span>
                         </p>
-                        <p class="mb-0"><%= userData.name %>,<%= userData.mobile %>,<%= address.address %>,<%= address.locality %>,<%= address.city %>,<%= address.pincode %>,</p>
+                        <p class="mb-0"><%= userData.name %>,<%= address.address %>,<%= address.locality %>,<%= address.city %>,</p>
+                      <p class="mb-0" >Pincode : <%= address.pincode %></p>
+                      <p class="mb-0" >Phone : <%= userData.mobile %> </p>
                       </div>
                       <div class="address-buttons">
                         <button type="button" class="btn btn-danger btn-sm" onclick="removeAddress('<%= address._id %>')">Remove</button>

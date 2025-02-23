@@ -102,6 +102,75 @@
            white-space: nowrap;
            max-width: 150px; /* Adjust the max-width according to your layout */
        }
+       
+       
+/* Mobile search button fix */
+@media screen and (max-width: 767px) {
+    .search-input {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .search-input form {
+        position: relative;
+        display: flex;
+        width: 100%;
+    }
+
+    .search-input input[type="text"] {
+        width: 90%;
+        height: 40px;
+        padding: 8px 40px 8px 15px;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+    }
+
+    .search-input button {
+        position: absolute;
+        right: 22px;
+        top: 0;
+        height: 40px;
+        width: 40px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        border: none;
+    }
+
+    .search-input button i {
+        font-size: 16px;
+        color: #666;
+    }
+    /* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .header {
+        padding: 10px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .header__logo {
+        padding: 0 15px;
+    }
+
+    .header__logo img {
+        max-height: 35px;
+    }
+
+    .breadcrumb-option {
+        margin-top: 60px;
+        padding: 10px 0;
+    }
+}
+}
+
+/* Additional fix for very small screens */
+@media screen and (max-width: 375px) {
+    .search-input input[type="text"] {
+        padding-right: 35px;
+    }
+}
    </style>
 </head>
 <body>
