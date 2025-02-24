@@ -1,6 +1,12 @@
 <%- include('../layouts/header') %>
-<%- include('../layouts/sidebar') %>
-<div class="content">
+
+<style>
+  
+</style>
+
+
+<div class="content d-flex">
+  <%- include('../layouts/sidebar') %>
   <% if (messages.success) { %>
     <div class="alert alert-success flash-message" role="alert" style="color: green;" data-timeout="5">
       <%= messages.success %>

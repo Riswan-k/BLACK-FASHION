@@ -3,116 +3,166 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Black Fashion</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>BLACK FASHION | we make we sell</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
   <style>
-    /* Adjust sidebar style as needed */
-    .sidebar {
-      /* height: 100%; */
-      width: 250px;
-      position: absolute;
-      top: 25%;
-      /* left: 0; */
-      background-color: white;
-      padding-top: 20px;
-      /* z-index: 1000; */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    .sidebar a {
-      padding: 10px 20px 10px 50px;
-      text-decoration: none;
-      font-size: 18px;
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .menu-btn {
+      position:absolute;
+      top: 180px;
+      left: 20px;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 100;
+      display: none;
+      background: none;
+      border: none;
       color: #333;
+    }
+
+    .sidebar {
+      width: 250px;
+      background: #fff;
+      min-height: 100vh;
+      padding: 20px 0;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-link {
       display: flex;
       align-items: center;
-      /* Centering icon and text vertically */
+      padding: 15px 25px;
+      color: #333;
+      text-decoration: none;
+      transition: all 0.3s ease;
     }
-    .sidebar a:hover {
-      background-color: #e9ecef;
-      color: #000;
-      /* Change text color on hover */
+
+    .nav-link i {
+      margin-right: 15px;
+      width: 20px;
+      text-align: center;
     }
-    .sidebar a.active {
-      background-color: red;
-      margin-left: 12px;
+
+    .nav-link:hover {
+      background: #f0f0f0;
+    }
+
+    .nav-link.active {
+      background: #ff4444;
       color: white;
-      width: 200px;
+      margin: 0 15px;
       border-radius: 5px;
-      padding: 10px 20px 10px 50px;
     }
-    .sidebar a i {
-      margin-right: 10px;
-      /* Spacing between icon and text */
-      color: black;
-      /* Icon color */
-    }
-    .sidebar a.active i {
+
+    .nav-link.active i {
       color: white;
-      /* Icon color when link is active */
     }
-    /* Style for the main content area */
-    .content {
-      margin-left: 270px;
-      /* Sidebar width + additional margin */
-      padding: 20px;
-    }
-    /* Flexbox layout for main content */
-    .wrapper {
-      display: flex;
-    }
-    /* Adjust width of main content area */
+
     @media (max-width: 768px) {
+      .menu-btn {
+        display: block;
+      }
+
       .sidebar {
-        width: 70px;
+        position: fixed;
+        left: -250px;
+        transition: 0.3s;
+        z-index: 99;
       }
-      .sidebar a {
-        padding: 10px;
-        font-size: 14px;
+
+      .sidebar.active {
+        left: 0;
       }
-      .content {
-        margin-left: 70px;
+
+      .main-content {
+        margin-left: 0;
+        padding: 20px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <a href="/profile" class="active" data-toggle="tooltip" data-placement="right" title="My Profile"><i class="fas fa-user"></i> Profile</a>
-    <a href="/myOrders" data-toggle="tooltip" data-placement="right" title="Orders"><i class="fas fa-shopping-cart"></i> Orders</a>
-    <a href="/wishlist" data-toggle="tooltip" data-placement="right" title="Wishlist"><i class="fas fa-heart"></i> Wishlist</a>
-    <a href="/coupons" data-toggle="tooltip" data-placement="right" title="Coupons"><i class="fas fa-tag"></i> Coupons</a>
-    <a href="/Wallet" data-toggle="tooltip" data-placement="right" title="Wallet"><i class="fas fa-wallet"></i> Wallet</a>
-    <a href="#" data-toggle="tooltip" data-placement="right" title="Reviews and Ratings"><i class="fas fa-star"></i> Reviews</a>
-    <a href="/logout" data-toggle="tooltip" data -placement="right" title="Logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  <button class="menu-btn" id="menuBtn">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div class="sidebar" id="sidebar">
+    <a href="/profile" class="nav-link">
+      <i class="fas fa-user"></i>
+      <span>Profile</span>
+    </a>
+    <a href="/myOrders" class="nav-link">
+      <i class="fas fa-shopping-cart"></i>
+      <span>My Orders</span>
+    </a>
+    <a href="/wishlist" class="nav-link">
+      <i class="fas fa-heart"></i>
+      <span>Wishlist</span>
+    </a>
+    <a href="/coupons" class="nav-link">
+      <i class="fas fa-tag"></i>
+      <span>My Coupons</span>
+    </a>
+    <a href="/Wallet" class="nav-link">
+      <i class="fas fa-wallet"></i>
+      <span>Wallet</span>
+    </a>
+    <a href="/address" class="nav-link">
+      <i class="fas fa-star"></i>
+      <span>Address</span>
+    </a>
+    <a href="/refferal" class="nav-link">
+      <i class="fas fa-wallet"></i>
+      <span>Referral</span>
+    </a>
+    <a href="/logout" class="nav-link">
+      <i class="fas fa-sign-out-alt"></i>
+      <span>Logout</span>
+    </a>
   </div>
 
-  <!-- Main content -->
-
-  <!-- JavaScript imports -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script>
-    $(document).ready(function() {
-      $('[data-toggle="tooltip"]').tooltip();
+    // Simple toggle functionality
+    const menuBtn = document.getElementById('menuBtn');
+    const sidebar = document.getElementById('sidebar');
+    
+    menuBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
 
-      // Remove active class from all sidebar links
-      $(".sidebar a").removeClass("active");
-      $(".sidebar a i").removeClass("active");
+    // Close sidebar when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!sidebar.contains(e.target) && !menuBtn.contains(e.target)) {
+        sidebar.classList.remove('active');
+      }
+    });
 
-      // Add active class to the current page link
-      var currentPage = window.location.pathname;
-      $('.sidebar a[href="' + currentPage + '"]').addClass("active");
-      $('.sidebar a[href="' + currentPage + '"] i').addClass("active");
+    // Handle active state based on current URL
+    const navLinks = document.querySelectorAll('.nav-link');
+    const currentUrl = window.location.pathname; // Get the current URL path
 
-      // Toggle active class on sidebar link click
-      $(".sidebar a").click(function(e) {
-        // e.preventDefault();
-        $(".sidebar a").removeClass("active");
-        $(".sidebar a i").removeClass("active");
-        $(this).addClass("active");
-        $(this).find("i").addClass("active");
+    navLinks.forEach(link => {
+      // Check if the link's href matches the current URL
+      if (link.getAttribute('href') === currentUrl) {
+        link.classList.add('active');
+      }
+
+      // Add click event to handle active state on click
+      link.addEventListener('click', () => {
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
       });
     });
   </script>

@@ -263,7 +263,7 @@ function updateSubtotalAndTotal(subtotal, total) {
 </script>
 
 <style>
- /* Toast Container Styles */
+/* Toast Container Styles */
 #toast-container > .toast {
     background-color: black !important;
     color: white !important;
@@ -332,8 +332,6 @@ function updateSubtotalAndTotal(subtotal, total) {
     border-right: 1px solid #e5e5e5;
 }
 
-
-
 /* Cart Close Button Styles */
 .cart__close {
     text-align: center;
@@ -342,6 +340,11 @@ function updateSubtotalAndTotal(subtotal, total) {
 .cart__close a {
     color: #333;
     font-size: 18px;
+    display: block;
+}
+
+.cart__close span {
+    display: inline-block;
 }
 
 .cart__close a:hover {
@@ -366,6 +369,43 @@ function updateSubtotalAndTotal(subtotal, total) {
 .rating i {
     color: #f5c842;
     font-size: 14px;
+}
+
+/* Cart Total Section Styles */
+.cart__total__procced {
+    background: #f5f5f5;
+    padding: 30px;
+    border-radius: 2px;
+}
+
+.cart__total__procced h6 {
+    color: #111111;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.cart__total__procced ul {
+    margin-bottom: 25px;
+}
+
+.cart__total__procced ul li {
+    list-style: none;
+    font-size: 16px;
+    color: #111111;
+    font-weight: 600;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.cart__total__procced ul li span {
+    float: right;
+}
+
+.cart__total__procced .primary-btn {
+    display: block;
+    text-align: center;
+    padding: 12px 0;
 }
 
 /* Responsive Styles */
@@ -444,9 +484,30 @@ function updateSubtotalAndTotal(subtotal, total) {
         top: 10px;
         right: 10px;
         background: rgba(255, 255, 255, 0.9);
-        padding: 5px;
+        padding: 8px;
         border-radius: 50%;
         z-index: 2;
+        width: 50px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .cart__close span {
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .cart__close a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        margin-right: 550px;
     }
 
     .cart__close .icon_close {
@@ -519,7 +580,7 @@ function updateSubtotalAndTotal(subtotal, total) {
     .cart__quantity,
     .cart__total {
         display: flex;
-        justify-content:flex-start;
+        justify-content: flex-start;
         align-items: center;
         width: 100%;
         padding: 5px 0;
@@ -561,42 +622,5 @@ function updateSubtotalAndTotal(subtotal, total) {
         width: 300px !important;
         font-size: 14px !important;
     }
-}
-
-/* Cart Total Section Styles */
-.cart__total__procced {
-    background: #f5f5f5;
-    padding: 30px;
-    border-radius: 2px;
-}
-
-.cart__total__procced h6 {
-    color: #111111;
-    font-weight: 600;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-}
-
-.cart__total__procced ul {
-    margin-bottom: 25px;
-}
-
-.cart__total__procced ul li {
-    list-style: none;
-    font-size: 16px;
-    color: #111111;
-    font-weight: 600;
-    overflow: hidden;
-    margin-bottom: 12px;
-}
-
-.cart__total__procced ul li span {
-    float: right;
-}
-
-.cart__total__procced .primary-btn {
-    display: block;
-    text-align: center;
-    padding: 12px 0;
 }
 </style>

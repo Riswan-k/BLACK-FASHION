@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx" >
+<html lang="zxx">
 <head>
    <meta charset="UTF-8" />
    <meta name="description" content="Ashion Template" />
@@ -9,7 +9,6 @@
    <title>BLACK FASHION | we make we sell</title>
 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
    
    <!-- Font Awesome CSS -->
    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
@@ -27,10 +26,9 @@
    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css" type="text/css" />
    <link rel="stylesheet" href="/assets/css/slicknav.min.css" type="text/css" />
    <link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
-   <!-- Custom Styles -->
+
    <style>
-    
-       /* Custom styles */
+       /* Base styles */
        .header__right {
            display: flex;
            align-items: center;
@@ -44,7 +42,7 @@
        .search-input {
            position: relative;
            margin-right: 20px;
-           display: block; /* Change display property to block or flex */
+           display: block;
        }
 
        .search-input input[type="text"] {
@@ -76,17 +74,14 @@
            color: #CA1515;
        }
 
-       /* Add margin between elements */
        .header__right > * {
            margin-right: 15px;
        }
 
-       /* Active state style */
        .header__menu ul li.active a {
-           color: #CA1515; /* Active color */
+           color: #CA1515;
        }
 
-       /* Inline CSS */
        .user-info {
            display: flex;
            align-items: center;
@@ -100,77 +95,158 @@
            overflow: hidden;
            text-overflow: ellipsis;
            white-space: nowrap;
-           max-width: 150px; /* Adjust the max-width according to your layout */
+           max-width: 150px;
        }
-       
-       
-/* Mobile search button fix */
-@media screen and (max-width: 767px) {
-    .search-input {
-        width: 100%;
-        margin: 10px 0;
-    }
 
-    .search-input form {
-        position: relative;
-        display: flex;
-        width: 100%;
-    }
+       /* Dropdown styles */
+       .dropdown {
+           position: relative;
+           display: inline-block;
+       }
 
-    .search-input input[type="text"] {
-        width: 90%;
-        height: 40px;
-        padding: 8px 40px 8px 15px;
-        border: 1px solid #ccc;
-        border-radius: 20px;
-    }
+       .dropdown-content {
+           display: none;
+           position: absolute;
+           background-color: #f9f9f9;
+           min-width: 200px;
+           box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+           z-index: 1;
+           border-radius: 4px;
+           top: 100%;
+           right: 0;
+       }
 
-    .search-input button {
-        position: absolute;
-        right: 22px;
-        top: 0;
-        height: 40px;
-        width: 40px;
-        padding: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: none;
-        border: none;
-    }
+       .dropdown:hover .dropdown-content {
+           display: block;
+       }
 
-    .search-input button i {
-        font-size: 16px;
-        color: #666;
-    }
-    /* Mobile Responsive Styles */
-@media (max-width: 768px) {
-    .header {
-        padding: 10px 0;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
+       .dropdown-content a {
+           color: #333;
+           padding: 12px 16px;
+           text-decoration: none;
+           display: block;
+           transition: background-color 0.3s;
+       }
 
-    .header__logo {
-        padding: 0 15px;
-    }
+       .dropdown-content a:hover {
+           background-color: #f1f1f1;
+       }
 
-    .header__logo img {
-        max-height: 35px;
-    }
+       /* Mobile Responsive Styles */
+       @media screen and (max-width: 767px) {
+           .header {
+               padding: 10px 15px;
+               position: fixed;
+               top: 0;
+               left: 0;
+               right: 0;
+               background: white;
+               z-index: 1000;
+               box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+           }
 
-    .breadcrumb-option {
-        margin-top: 60px;
-        padding: 10px 0;
-    }
-}
-}
+           .header .container-fluid {
+               padding: 0;
+           }
 
-/* Additional fix for very small screens */
-@media screen and (max-width: 375px) {
-    .search-input input[type="text"] {
-        padding-right: 35px;
-    }
-}
+           .row.align-items-center {
+               margin: 0;
+               flex-wrap: nowrap;
+           }
+
+           .header__logo {
+               padding: 0;
+               flex: 0 0 auto;
+           }
+
+           .header__logo img {
+               max-height: 30px;
+               width: auto;
+           }
+
+           .header__menu {
+               flex: 1;
+               padding: 0 10px;
+           }
+
+           .header__menu ul {
+               display: flex;
+               justify-content: center;
+               margin: 0;
+               padding: 0;
+           }
+
+           .header__menu ul li {
+               padding: 0 8px;
+               font-size: 14px;
+           }
+
+           .header__right {
+               flex: 0 0 auto;
+               padding: 0;
+               gap: 10px;
+           }
+
+           .search-input {
+               margin: 0;
+               width: auto;
+           }
+
+           .search-input input[type="text"] {
+               width: 120px;
+               height: 30px;
+               padding: 5px 25px 5px 10px;
+               font-size: 13px;
+           }
+
+           .search-input button {
+               height: 30px;
+               width: 30px;
+               right: 10px;
+               top: -5px;
+           }
+
+           .dropdown {
+               margin: 0;
+           }
+
+           .user-info {
+               font-size: 14px;
+           }
+
+           .header__right__widget {
+               margin: 0;
+               padding: 0;
+               display: flex;
+               align-items: center;
+           }
+
+           .header__right__widget li a {
+               font-size: 16px;
+               padding: 0;
+           }
+
+           /* Adjust main content for fixed header */
+           body {
+               padding-top: 60px;
+           }
+       }
+
+       /* Extra small device optimizations */
+       @media screen and (max-width: 375px) {
+           .header__menu ul li {
+               padding: 0 5px;
+               font-size: 13px;
+           }
+
+           .search-input input[type="text"] {
+               width: 100px;
+           }
+
+           .header__right > * {
+               margin-right: 8px;
+           }
+       }
    </style>
 </head>
 <body>
@@ -178,36 +254,6 @@
    <div id="preloder">
        <div class="loader"></div>
    </div>
-
-   <!-- Offcanvas Menu Begin -->
-   <div class="offcanvas-menu-overlay"></div>
-   <div class="offcanvas-menu-wrapper">
-       <div class="offcanvas__close">+</div>
-       <ul class="offcanvas__widget">
-           <li><span class="icon_search search-switch"></span></li>
-           <li>
-               <a href="#">
-                   <span class="icon_heart_alt"></span>
-                   <div class="tip">2</div>
-               </a>
-           </li>
-           <li>
-               <a href="#">
-                   <span class="icon_bag_alt"></span>
-                   <div class="tip">2</div>
-               </a>
-           </li>
-       </ul>
-       <div class="offcanvas__logo">
-           <a href="./index.html"><img src="/assets/img/logo2.png" alt="" /></a>
-       </div>
-       <div id="mobile-menu-wrap"></div>
-       <div class="offcanvas__auth">
-           <a href="#">Login</a>
-           <a href="#">Register</a>
-       </div>
-   </div>
-   <!-- Offcanvas Menu End -->
 
    <!-- Header Section Begin -->
    <header class="header">
@@ -230,25 +276,20 @@
                </div>
                <div class="col-lg-3">
                    <div class="header__right">
-                       <!-- <div class="search-input">
-                           <input type="text" placeholder="Search...">
-                           <button type="submit"><i class="fa fa-search"></i></button>
-                       </div> -->
                        <div class="search-input">
-                        <form id="searchForm" action="/search" method="GET">
-                            <input type="text" name="query" id="searchQuery" placeholder="Search..." />
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                        </form>
-                     </div>
+                           <form id="searchForm" action="/search" method="GET">
+                               <input type="text" name="query" id="searchQuery" placeholder="Search..." />
+                               <button type="submit"><i class="fa fa-search"></i></button>
+                           </form>
+                       </div>
                        <div class="dropdown">
                            <% if (typeof userData != 'undefined') { %>
                                <div class="user-info">
                                    <i class="far fa-user-circle"></i>
-                                   <div class="user-name"><%= userData.name %></div>
+                                   <div class="user-name"></div>
                                </div>
-                               
                                <div class="dropdown-content">
-                                   <a href="/profile"><i class="fa fa-user"></i> My Profile</a>
+                                   <a href="/profile"><i class="fa fa-user"></i><%= userData.name %></a>
                                    <a href="/myOrders"><i class="fa fa-shopping-cart"></i> Orders</a>
                                    <a href="/wishlist"><i class="fa fa-heart"></i> Wishlist</a>
                                    <a href="/coupons"><i class="fa fa-tag"></i> Coupon</a>
@@ -264,7 +305,6 @@
                                </div>
                            <% } %>
                        </div>
-
                        <ul class="header__right__widget">
                            <li>
                                <a href="/cart">
@@ -277,55 +317,41 @@
            </div>
        </div>
    </header>
-   <!-- Header Section End -->
-    
+
    <script>
-    // JavaScript to set active state
-    document.addEventListener("DOMContentLoaded", function() {
-        var url = window.location.pathname;
-        var filename = url.substring(url.lastIndexOf('/') + 1);
-        var activeMenuItem = document.getElementById(filename.split('.')[0]);
-        
-        // Set default active to Home
-        if (!activeMenuItem || filename === '') {
-            var homeMenuItem = document.getElementById('home');
-            if (homeMenuItem) {
-                homeMenuItem.classList.add('active');
-            }
-        } else {
-            activeMenuItem.classList.add('active');
-        }
-    });
+       document.addEventListener("DOMContentLoaded", function() {
+           var url = window.location.pathname;
+           var filename = url.substring(url.lastIndexOf('/') + 1);
+           var activeMenuItem = document.getElementById(filename.split('.')[0]);
+           
+           if (!activeMenuItem || filename === '') {
+               var homeMenuItem = document.getElementById('home');
+               if (homeMenuItem) {
+                   homeMenuItem.classList.add('active');
+               }
+           } else {
+               activeMenuItem.classList.add('active');
+           }
+       });
 
+       function getQueryParam(param) {
+           const urlparams = new URLSearchParams(window.location.search);
+           return urlparams.get(param);
+       }
 
+       const searchQuery = getQueryParam('query');
+       if (searchQuery) {
+           document.getElementById('searchQuery').value = decodeURIComponent(searchQuery);
+       }
 
-function getQueryParam(param) {
-    const urlparams = new URLSearchParams(window.location.search);
-    return urlparams.get(param);
-}
-
-
-    const searchQuery = getQueryParam('query');
-    if (searchQuery){
-        document.getElementById('searchQuery').value = decodeURIComponent(searchQuery);
-    }
-
-
-
-    document.getElementById('searchForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const query = document.getElementById('searchQuery').value.trim();
-    
-    if (query) {
-        window.location.href = `/search?query=${encodeURIComponent(query)}`;
-    }
-});
-
- </script>
-
-
-
-
-
- 
-
+       document.getElementById('searchForm').addEventListener('submit', function(event) {
+           event.preventDefault();
+           const query = document.getElementById('searchQuery').value.trim();
+           
+           if (query) {
+               window.location.href = `/search?query=${encodeURIComponent(query)}`;
+           }
+       });
+   </script>
+</body>
+</html>
